@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Vesak</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{height:100vh;overflow:hidden;background:linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),url('https://images.unsplash.com/photo-1524492449090-1d9f2c1e0f51');background-size:cover;background-position:center;color:#fff}
+.hero{display:flex;justify-content:center;align-items:center;height:100vh;text-align:center;padding:20px;position:relative;z-index:2}
+.content{max-width:700px;animation:fadeIn 2s ease;animation:floatIcons 3s ease-in-out infinite;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+h1{font-size:3.5rem;color:#ffd700;margin-bottom:15px;text-shadow:0 0 20px rgba(255,215,0,.7)}
+h2{font-size:1.5rem;margin-bottom:20px}
+p{font-size:1.1rem;line-height:1.6;margin-bottom:30px}
+.btn{padding:12px 25px;background:#ffd700;color:#000;border:none;border-radius:30px;font-size:1rem;cursor:pointer;transition:.3s;text-decoration:none}
+.btn:hover{background:#fff}
+
+/* lanterns */
+.lantern{position:absolute;bottom:-100px;width:40px;height:60px;background:#ffcc00;border-radius:10px;box-shadow:0 0 20px rgba(255,204,0,.8);animation:float 8s linear infinite;opacity:.85;z-index:1}
+@keyframes float{0%{transform:translateY(0) scale(1)}100%{transform:translateY(-120vh) scale(1.2)}}
+.lantern:nth-child(1){left:10%;animation-duration:7s}
+.lantern:nth-child(2){left:25%;animation-duration:9s}
+.lantern:nth-child(3){left:40%;animation-duration:6s}
+.lantern:nth-child(4){left:55%;animation-duration:8s}
+.lantern:nth-child(5){left:70%;animation-duration:10s}
+.lantern:nth-child(6){left:85%;animation-duration:7.5s}
+/* ================= BACKGROUND SKY ================= */
+#vesakSky{
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  background:linear-gradient(#050010,#140020,#1d0033);
+}
+
+/* ENTER SCREEN */
+#startScreen{
+  position:fixed; inset:0; background:black; color:#ffd700;
+  display:flex; justify-content:center; align-items:center;
+  font-size:26px; z-index:999; cursor:pointer;
+}
+
+body{height:100vh; overflow:hidden; color:#fff}
+
+/* HERO */
+.hero{display:flex;justify-content:center;align-items:center;height:100vh;text-align:center;z-index:2;position:relative}
+h1{font-size:3.5rem;color:#ffd700;text-shadow:0 0 25px gold}
+h2{margin:20px 0}
+.btn{padding:12px 25px;background:#ffd700;color:#000;border:none;border-radius:30px}
+
+/* footer */
+.footer{position:absolute;bottom:10px;width:100%;text-align:center;font-size:.9rem;opacity:.8;z-index:2;animation:floatIcons 3s ease-in-out infinite;}
+
+
+
+/* FLOATING LANTERNS */
+.lantern{position:absolute;bottom:-150px;width:70px;height:90px;animation:floatUp linear infinite;z-index:1}
+.lantern::before{
+  content:"";position:absolute;inset:0;
+  background:var(--lanternColor);
+  clip-path:polygon(50% 0%,85% 20%,85% 80%,50% 100%,15% 80%,15% 20%);
+  box-shadow:0 0 25px var(--lanternGlow),0 0 45px var(--lanternGlow);
+}
+@keyframes floatUp{0%{transform:translateY(0)}100%{transform:translateY(-130vh)}}
+
+/* HANGING KUDU */
+.corner-rope{position:fixed;top:0;right:95px;width:3px;height:120px;background:#ccc;z-index:4}
+.corner-kudu{position:fixed;top:110px;right:60px;width:130px;height:150px;z-index:5;animation:swingLantern 4s ease-in-out infinite;transform-origin:top}
+.kudu-body{
+  width:130px;height:130px;
+  background:linear-gradient(135deg,#ff2e63,#ffd700,#1e90ff,#ff66e0);
+  clip-path:polygon(50% 0%,85% 20%,85% 80%,50% 100%,15% 80%,15% 20%);
+  box-shadow:0 0 40px gold,inset 0 0 20px white;
+}
+.kudu-tassel{
+  position:absolute;top:130px;left:50%;transform:translateX(-50%);
+  width:70px;height:90px;
+  background:repeating-linear-gradient(to bottom,#ffe8a3 0,#ffe8a3 3px,transparent 3px,transparent 6px);
+}
+@keyframes swingLantern{0%{transform:rotate(6deg)}50%{transform:rotate(-6deg)}100%{transform:rotate(6deg)}}
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">/* SOCIAL MEDIA ICONS */
+/* Social bar container */
+.social-bar{
+  position:absolute;
+  bottom:10px;
+  right:20%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:22px;
+  z-index:2;
+}
+{position:absolute;bottom:10px;width:100%;text-align:center;font-size:.9rem;opacity:.8;z-index:2}
+
+/* circle buttons */
+.social{
+  width:60px;
+  height:60px;
+bottom:10px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:bottom;
+  font-size:26px;
+  color:white;
+  text-decoration:none;
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.2);
+  transition:0.4s;
+  animation:floatIcons 3s ease-in-out infinite;
+}
+
+/* hover glow */
+.social:hover{
+  transform:translateY(-8px) scale(1.15);
+  box-shadow:0 0 25px currentColor;
+}
+
+/* brand colors */
+.fb{ background:#1877f2; }
+.ig{ background:linear-gradient(45deg,#ff0080,#ff8c00); }
+.yt{ background:#ff0000; }
+.tk{ background:#111; }
+.wa{ background:#25d366; }
+
+/* floating animation */
+@keyframes floatIcons{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+<canvas id="vesakSky"></canvas>
+
+<div id="startScreen">🪔 Tap to Enter Vesak Wishes 🪔</div>
+
+<div class="corner-rope"></div>
+<div class="corner-kudu">
+  <div class="kudu-body"></div>
+  <div class="kudu-tassel"></div>
+</div>
+<section class="hero">
+  <div class="content">
+    <h1>Happy Vesak Festival 🪔</h1>
+    <h2>May Peace & Enlightenment Guide You</h2>
+    <p>
+      May the light of Vesak lanterns remove all darkness from your life and guide you toward peace,
+      wisdom, and happiness. Let compassion and kindness shine in your heart.
+    </p>
+    <a href="#" class="btn">Share Blessings</a>
+  </div>
+
+</div>
+
+
+</section>
+<div class="footer">🌸 Wishing You a Blessed Vesak 🌸<br>
+<b>from Gagumina</b>
+</div>
+<audio id="bgm" src="your-vesak-song.mp3" loop></audio>
+
+<script>
+// Start music
+startScreen.onclick=()=>{bgm.play();startScreen.style.display='none';}
+
+// ===== SKY ANIMATION =====
+const sky=document.getElementById("vesakSky");
+const ctx=sky.getContext("2d");
+let W,H;function resize(){W=sky.width=innerWidth;H=sky.height=innerHeight}resize();onresize=resize;
+
+function moon(){
+ ctx.beginPath();
+ ctx.arc(W-120,120,55,0,Math.PI*2);
+ ctx.fillStyle="#ffe066";
+ ctx.shadowBlur=40;ctx.shadowColor="#ffd700";
+ ctx.fill();ctx.shadowBlur=0;
+}
+
+let stars=[];for(let i=0;i<120;i++)stars.push({x:Math.random()*W,y:Math.random()*H,o:Math.random()});
+function drawStars(){stars.forEach(s=>{ctx.globalAlpha=s.o;ctx.fillStyle="#fff";ctx.fillRect(s.x,s.y,2,2);s.o+=(Math.random()-.5)*.05;s.o=Math.max(0,Math.min(1,s.o));});ctx.globalAlpha=1;}
+
+class SkyLantern{
+ constructor(){this.x=Math.random()*W;this.y=H+Math.random()*300;this.s=0.3+Math.random()*0.7;}
+ update(){this.y-=this.s;if(this.y<-50)this.y=H+100;}
+ draw(){ctx.fillStyle="#ffd700";ctx.shadowBlur=20;ctx.shadowColor="#ffcc00";ctx.fillRect(this.x,this.y,10,15);ctx.shadowBlur=0;}
+}
+let skyLanterns=[];for(let i=0;i<18;i++)skyLanterns.push(new SkyLantern());
+
+function loop(){
+ ctx.clearRect(0,0,W,H);
+ moon();drawStars();
+ skyLanterns.forEach(l=>{l.update();l.draw();});
+ requestAnimationFrame(loop);
+}
+loop();
+
+// floating lantern generator
+const lanternColors=[
+ {color:"linear-gradient(#ffe066,#ffcc00)", glow:"#ffd700"},
+ {color:"linear-gradient(#ff6b6b,#ff2e63)", glow:"#ff4d6d"},
+ {color:"linear-gradient(#6ec6ff,#1e90ff)", glow:"#4db8ff"},
+ {color:"linear-gradient(#ff9de6,#ff4dd2)", glow:"#ff66e0"}
+];
+function createLantern(){
+ const lantern=document.createElement("div");
+ lantern.className="lantern";
+ const c=lanternColors[Math.floor(Math.random()*lanternColors.length)];
+ lantern.style.setProperty('--lanternColor',c.color);
+ lantern.style.setProperty('--lanternGlow',c.glow);
+ lantern.style.left=Math.random()*100+"vw";
+ lantern.style.animationDuration=(8+Math.random()*6)+"s";
+ document.body.appendChild(lantern);
+ setTimeout(()=>lantern.remove(),15000);
+}
+setInterval(createLantern,800);
+</script>
+
+</body>
+</html>
